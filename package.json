@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./Users/amy/wikistack/app.js"
+    "start": "nodemon ./Users/lyndsey/gh/week2/wikistack/app.js"
   },
   "author": "amy",
   "license": "ISC",
