@@ -1,9 +1,10 @@
 const morgan = require('morgan');
 const express = require('express');
-const { addPage, editPage, main, userList, userPages, wikiPage } = require('./views/index.js');
+const { addPage, editPage, main, userList, userPages, wikiPage } = require('./views/index');
 const layout = require('./views/layout')
 const app = express();
 const { db, Page, User } = require('./models');
+const PORT = 3000;
 
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/public"));
@@ -22,7 +23,13 @@ then(() => {
 
 
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log('App listeninig in port 3000');
-});
+const init = async () => {
+  await db.sync({force: true});
+  app.listen(PORT, () => {
+    console.log('App listeninig in port 3000');
+  });
+}
+
+init();
+
+
