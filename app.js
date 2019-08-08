@@ -6,6 +6,7 @@ const app = express();
 const { db, Page, User } = require('./models');
 const PORT = 3000;
 
+
 app.use(morgan("dev"));
 app.use(express.static(__dirname + "/public"));
 
@@ -13,8 +14,12 @@ app.use(express.urlencoded( {extended: false} ));
 
 
 app.get("/", async (req, res, next) => {
+  res.redirect('/wiki');
   res.send(layout(''));
 });
+
+app.use("/wiki", require('./routes/wiki'));
+// app.use("/user", require('./routes/user'));
 
 db.authenticate().
 then(() => {
